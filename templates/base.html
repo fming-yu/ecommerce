@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}My E-Commerce Store{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'shop:product_list' %}">My E-Commerce Store</a></h1>
+        <nav>
+            <p>
+                <a href="{% url 'shop:product_list' %}">Catalog</a> |
+                <a href="{% url 'cart:cart_detail' %}">
+                    Cart: {{ cart|length }} item{{ cart|length|pluralize }} (${{ cart.get_total_price }})
+                </a>
+            </p>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p><small>&copy; CSC 413 E-Commerce Store Demo</small></p>
+    </footer>
+</body>
+</html>
